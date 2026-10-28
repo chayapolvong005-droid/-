@@ -1,0 +1,1110 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>IQ 300 แหกโรงบาล</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chonburi&family=IBM+Plex+Mono:wght@400;500;600&family=Sarabun:wght@400;500;600;700&display=swap">
+<style>
+/* แนวคิดเลย์เอาต์: แฟ้มผู้ป่วยแปะบนผนังโรงพยาบาล คอลัมน์เดียวชิดซ้าย การ์ดกระดาษเหลี่ยมมีแท็บ ตราประทับสีแดงคือจุดเด่นจุดเดียว */
+:root{
+  --wall:#d2dcce; --paper:#eef3ec; --ink:#15201a; --muted:#52665b; --line:#a5b6aa;
+  --ctrl:#dfe8dc; --ctrl-hi:#cfdccb; --stamp:#bf2f28; --ok:#2b7a4b; --warn:#b9740c;
+  --fluoro:#f1e56b; --bulb-off:#b8c5bb; --safe-cell:#c6dcc9; --watch:#d65a50;
+  --font-display:'Chonburi','Sarabun',serif;
+  --font-body:'Sarabun',system-ui,sans-serif;
+  --font-mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --wall:#0f1713; --paper:#17231d; --ink:#e3ede6; --muted:#9bb0a3; --line:#34463d;
+    --ctrl:#1f2f27; --ctrl-hi:#2a3e34; --stamp:#ff7468; --ok:#59c98a; --warn:#e0a13a;
+    --fluoro:#ece172; --bulb-off:#2c3d34; --safe-cell:#1f3b2b; --watch:#b2433a; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --wall:#0f1713; --paper:#17231d; --ink:#e3ede6; --muted:#9bb0a3; --line:#34463d;
+  --ctrl:#1f2f27; --ctrl-hi:#2a3e34; --stamp:#ff7468; --ok:#59c98a; --warn:#e0a13a;
+  --fluoro:#ece172; --bulb-off:#2c3d34; --safe-cell:#1f3b2b; --watch:#b2433a; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{min-height:100%}
+body{
+  margin:0; background:var(--wall); color:var(--ink);
+  font-family:var(--font-body); font-size:16px; line-height:1.65;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:20px 56px;
+}
+.wrap{max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:20px;min-width:0}
+.mono{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+.muted{color:var(--muted)}
+.small{font-size:.875rem}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+button:disabled{cursor:not-allowed}
+:focus-visible{outline:3px solid var(--stamp);outline-offset:2px}
+
+/* ---------- hero ---------- */
+.hero{display:flex;flex-direction:column;gap:6px;padding-top:8px}
+.eyebrow{margin:0;font-size:.8rem;letter-spacing:.08em;color:var(--muted)}
+h1{font-family:var(--font-display);font-weight:400;font-size:clamp(2.1rem,7vw,3.6rem);line-height:1.35;margin:0;text-wrap:balance}
+.lede{margin:0;font-size:1.1rem;color:var(--muted);max-width:40ch;text-wrap:balance}
+
+/* ---------- folder / card ---------- */
+.folder{display:flex;flex-direction:column;min-width:0}
+.ftab{align-self:flex-start;background:var(--ink);color:var(--paper);font-family:var(--font-mono);font-size:.78rem;letter-spacing:.06em;padding:4px 12px;max-width:100%}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:2px;padding:20px;min-width:0}
+h2.h{font-family:var(--font-display);font-weight:400;font-size:1.5rem;line-height:1.45;margin:0 0 8px;text-wrap:balance}
+h3{margin:0 0 8px;font-size:1.05rem}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:20px}
+.cols>*{min-width:0}
+
+dl.profile{margin:0;display:flex;flex-direction:column;gap:10px}
+dl.profile>div{display:grid;grid-template-columns:7.5rem 1fr;gap:12px;align-items:baseline;border-bottom:1px dashed var(--line);padding-bottom:10px}
+dl.profile>div:last-child{border-bottom:0;padding-bottom:0}
+dl.profile dt{color:var(--muted);font-size:.9rem}
+dl.profile dd{margin:0;min-width:0}
+.iq{font-size:1.6rem;font-weight:600;line-height:1.2}
+
+dl.howto{margin:0;display:flex;flex-direction:column;gap:12px}
+dl.howto dt{font-weight:700}
+dl.howto dd{margin:0;color:var(--muted)}
+
+.mission{background:var(--ink);color:var(--paper);padding:20px;border-radius:2px;display:flex;flex-direction:column;gap:6px}
+.mission .lbl{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.1em;opacity:.8}
+.mission p{margin:0;font-size:1.1rem;max-width:62ch}
+
+/* ---------- modes ---------- */
+.modes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:12px}
+.mode{display:flex;flex-direction:column;gap:6px;text-align:left;background:var(--paper);border:2px solid var(--ink);border-radius:2px;padding:14px;min-width:0}
+.mode:hover:not(:disabled){background:var(--ctrl)}
+.mode .mname{font-family:var(--font-display);font-size:1.25rem;line-height:1.4}
+.mode .mdesc{font-size:.9rem;color:var(--muted);flex:1}
+.mode .mstate{font-family:var(--font-mono);font-size:.75rem;letter-spacing:.04em}
+.mode.locked{border-style:dashed;border-color:var(--line);background:transparent;opacity:.75}
+.mode.locked .mname{color:var(--muted)}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:8px 18px;border:2px solid var(--ink);border-radius:2px;background:var(--paper);font-weight:600}
+.btn.primary{background:var(--ink);color:var(--paper)}
+.btn:hover:not(:disabled){background:var(--ctrl-hi);color:var(--ink)}
+.btn.primary:hover:not(:disabled){background:var(--stamp);border-color:var(--stamp);color:#fff}
+.btn:disabled{opacity:.45}
+.btn.ghost{border-color:var(--line);font-weight:500}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
+
+/* ---------- topbar ---------- */
+.topbar{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;justify-content:space-between;font-size:.9rem}
+.topbar .who{min-width:0}
+.topbar .hn{font-family:var(--font-mono);font-size:.75rem;background:var(--ctrl-hi);padding:2px 7px;margin-right:6px}
+.topbar .meta{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center}
+.badge{background:var(--ink);color:var(--paper);padding:1px 10px;font-weight:600}
+.lives{display:inline-flex;gap:4px;vertical-align:middle;font-family:var(--font-mono)}
+.lives i{width:12px;height:12px;border:2px solid var(--ink);display:inline-block}
+.lives i.on{background:var(--ink)}
+.steps{display:flex;gap:4px;flex:1 1 100%}
+.steps i{flex:1;height:6px;background:var(--ctrl-hi)}
+.steps i.done{background:var(--ink)}
+.steps i.cur{background:var(--stamp)}
+.btn-link{background:none;border:0;padding:4px 0;text-decoration:underline;color:var(--muted)}
+
+/* ---------- meter ---------- */
+.meter-wrap{display:flex;flex-direction:column;gap:4px;margin-bottom:18px}
+.mrow{display:flex;justify-content:space-between;align-items:baseline;font-weight:600}
+.meter{position:relative;height:16px;border:2px solid var(--ink);background:var(--ctrl)}
+.meter::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 calc(25% - 1px),var(--ink) calc(25% - 1px) 25%);opacity:.35;pointer-events:none}
+.fill{height:100%;width:0;transition:width .25s linear}
+.fill.calm{background:var(--ok)} .fill.warn{background:var(--warn)} .fill.danger{background:var(--stamp)}
+.mtime{font-size:.85rem;color:var(--muted)}
+
+/* ---------- shared stage bits ---------- */
+.obst{border-left:4px solid var(--stamp);padding:4px 0 4px 12px;margin:14px 0}
+.obst .lbl{font-family:var(--font-mono);font-size:.75rem;letter-spacing:.1em;color:var(--stamp)}
+.obst p{margin:0}
+.story{margin:0 0 8px;max-width:62ch}
+.rules{margin:12px 0 0;padding-left:1.2rem;color:var(--muted)}
+.msg{min-height:1.65em;margin:10px 0 0;color:var(--stamp);font-weight:600}
+.hintline{margin:10px 0 0;padding:8px 12px;background:var(--ctrl);border:1px dashed var(--line)}
+.foot{margin-top:16px;padding-top:14px;border-top:1px dashed var(--line);display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:stretch}
+.shake{animation:shake .3s}
+@keyframes shake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+
+/* sequence */
+.seqmeta{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;color:var(--muted);font-size:.9rem;margin-bottom:10px}
+.tiles{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 16px}
+.tile{min-width:3.4rem;padding:10px 12px;text-align:center;font-family:var(--font-mono);font-size:1.4rem;font-weight:500;background:var(--ctrl);border:1px solid var(--line)}
+.tile.q{border:2px dashed var(--stamp);color:var(--stamp);background:transparent}
+input[type=number]{-moz-appearance:textfield;appearance:textfield}
+input[type=number]::-webkit-outer-spin-button,input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.field{min-height:44px;width:min(100%,12rem);padding:6px 12px;border:2px solid var(--ink);border-radius:2px;background:var(--paper);font-family:var(--font-mono);font-size:1.2rem}
+
+/* cameras */
+.scroll{overflow-x:auto;margin:10px 0}
+.camgrid{display:grid;grid-template-columns:5rem repeat(var(--T),minmax(26px,1fr));gap:2px;min-width:max-content;font-size:.8rem}
+.camgrid .tk{text-align:center;color:var(--muted)}
+.camgrid .cn{white-space:nowrap;padding-right:8px}
+.cell{height:26px;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono)}
+.cell.safe{background:var(--safe-cell)}
+.cell.watch{background:var(--watch);color:#fff}
+.cell.path{outline:3px solid var(--ink);outline-offset:-3px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.85rem;color:var(--muted)}
+.legend span::before{content:"";display:inline-block;width:12px;height:12px;margin-right:6px;vertical-align:-1px}
+.legend .w::before{background:var(--watch)} .legend .s::before{background:var(--safe-cell)}
+ul.camrules{margin:8px 0;padding-left:1.2rem}
+ul.camrules li{margin-bottom:2px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 14px}
+.chip{min-width:44px;min-height:44px;border:2px solid var(--ink);border-radius:2px;background:var(--paper);font-size:1rem}
+.chip.on{background:var(--ink);color:var(--paper)}
+.chip.out{border-style:dashed;border-color:var(--line);color:var(--muted);text-decoration:line-through}
+
+/* drawers */
+.drawers{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:12px;margin:12px 0}
+.drawer{position:relative;display:flex;flex-direction:column;gap:6px;align-items:flex-start;text-align:left;padding:30px 12px 12px;border:2px solid var(--ink);border-radius:2px;background:var(--ctrl);min-width:0}
+.drawer::before{content:"";position:absolute;top:10px;left:12px;width:44px;height:8px;background:var(--ink);border-radius:1px}
+.drawer:hover:not(:disabled){background:var(--ctrl-hi)}
+.drawer .dl{font-family:var(--font-display);font-size:1.5rem;line-height:1.2}
+.drawer .sign{font-size:.92rem;padding:6px 8px;background:var(--paper);border:1px solid var(--line);width:100%}
+.drawer .st{font-family:var(--font-mono);font-size:.75rem;color:var(--stamp);min-height:1.2em}
+.drawer.out{opacity:.5;border-style:dashed}
+.drawer.out .sign{text-decoration:line-through}
+
+/* lights */
+.lights{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:8px;max-width:calc(var(--n) * 72px);margin:12px 0}
+.bulb{aspect-ratio:1;max-width:100%;border:2px solid var(--ink);border-radius:50%;background:var(--bulb-off)}
+.bulb.on{background:var(--fluoro);box-shadow:0 0 16px 2px var(--fluoro)}
+.bulb.hint{outline:3px dashed var(--stamp);outline-offset:3px}
+.lstat{display:flex;flex-wrap:wrap;gap:6px 20px;align-items:center}
+
+/* code lock */
+.hist{list-style:none;margin:8px 0 14px;padding:0;display:flex;flex-direction:column;gap:6px}
+.hist li{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding:6px 10px;background:var(--ctrl)}
+.hist .digits{display:inline-flex;gap:6px}
+.hist .digits b{min-width:2rem;text-align:center;background:var(--paper);border:1px solid var(--line);padding:1px 6px}
+.hist .pegs{font-size:1.05rem;letter-spacing:.1em}
+.slots{display:flex;gap:8px;margin:8px 0}
+.slot{width:3.2rem;height:3.4rem;display:flex;align-items:center;justify-content:center;border:2px dashed var(--line);background:transparent;font-family:var(--font-mono);font-size:1.5rem}
+.slot.filled{border:2px solid var(--ink);background:var(--paper)}
+.pad{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px}
+.key{width:48px;height:48px;border:2px solid var(--ink);border-radius:2px;background:var(--paper);font-size:1.15rem}
+.key:hover:not(:disabled){background:var(--ctrl-hi)}
+.key:disabled{opacity:.35}
+.key.x{text-decoration:line-through;border-style:dashed}
+
+/* result screens */
+.result{display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.result .lead{font-size:1.15rem;margin:0;max-width:56ch}
+.stamp{display:inline-block;border:4px solid var(--stamp);color:var(--stamp);font-family:var(--font-display);font-size:clamp(1.8rem,8vw,3rem);line-height:1.4;padding:0 18px;transform:rotate(-5deg);animation:slam .35s ease-out}
+.stamp.ok{border-color:var(--ok);color:var(--ok)}
+@keyframes slam{from{transform:rotate(-5deg) scale(2);opacity:0}to{transform:rotate(-5deg) scale(1);opacity:1}}
+.stats{display:flex;flex-wrap:wrap;gap:8px 24px;margin:4px 0}
+.stats div{display:flex;flex-direction:column}
+.stats b{font-family:var(--font-mono);font-size:1.4rem;line-height:1.3}
+.unlock{border:2px solid var(--ok);padding:10px 14px;color:var(--ok);font-weight:700}
+.nextmodes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:12px;width:100%}
+
+/* ---------- โลกที่เดินได้ ---------- */
+.goal{margin:0 0 10px;padding:8px 12px;background:var(--ctrl);border-left:4px solid var(--stamp);font-weight:600}
+.canvaswrap{border:2px solid var(--ink);background:#1d2622;line-height:0}
+#world{display:block;width:100%;height:auto}
+.ctrls{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-top:12px}
+.ctrls .kb{flex:1 1 200px;margin:0}
+.dpad{display:grid;grid-template-columns:repeat(3,54px);grid-template-rows:repeat(2,54px);gap:6px}
+.dpad button{touch-action:none;user-select:none;-webkit-user-select:none;border:2px solid var(--ink);background:var(--paper);border-radius:2px;font-size:1.3rem;line-height:1;padding:0}
+.dpad button:active{background:var(--ctrl-hi)}
+.dpad .u{grid-column:2;grid-row:1}.dpad .l{grid-column:1;grid-row:2}.dpad .d{grid-column:2;grid-row:2}.dpad .r{grid-column:3;grid-row:2}
+@media (hover:hover) and (pointer:fine){.dpad{display:none}}
+.pz-head{display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center;margin-bottom:10px}
+.wires{display:flex;flex-wrap:wrap;gap:12px;margin:12px 0}
+.wire{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:76px;padding:12px 10px;border:2px solid var(--ink);border-radius:2px;background:var(--ctrl)}
+.wire:hover:not(:disabled){background:var(--ctrl-hi)}
+.wire .bar{width:16px;height:76px;border:2px solid var(--ink);border-radius:8px}
+.wire .wn{font-weight:600}
+.wire .st{font-family:var(--font-mono);font-size:.75rem;color:var(--stamp);min-height:1.2em}
+.wire.out{opacity:.5;border-style:dashed}
+.wire.out .bar{border-style:dashed}
+@media (prefers-reduced-motion: reduce){
+  .stamp,.shake{animation:none}
+  .fill{transition:none}
+}
+</style>
+
+<div class="wrap" id="main"></div>
+
+<script>
+/* ---------- ตัวสร้างโจทย์ (ไม่แตะหน้าเว็บ) ---------- */
+const rnd=(a,b)=>a+Math.floor(Math.random()*(b-a+1));
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+
+const PRIMES=[2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53];
+const SEQ_GENS=[
+  {t:1,hint:'ผลต่างของเลขแต่ละคู่เท่ากันทุกคู่',make:()=>{const a=rnd(2,20),d=rnd(2,9);return n=>Array.from({length:n},(_,i)=>a+d*i);}},
+  {t:1,hint:'เลขแต่ละตัวคือตัวก่อนหน้าคูณด้วยเลขเดิมทุกครั้ง',make:()=>{const a=rnd(1,4),r=rnd(2,3);return n=>Array.from({length:n},(_,i)=>a*Math.pow(r,i));}},
+  {t:1,hint:'ลองแยกดูว่าแต่ละตัวคือกำลังสองของอะไร',make:()=>{const c=rnd(1,5);return n=>Array.from({length:n},(_,i)=>(i+c)*(i+c));}},
+  {t:2,hint:'ตัวถัดไปคือผลบวกของสองตัวก่อนหน้า',make:()=>{const x0=rnd(1,6),x1=rnd(2,7);return n=>{const r=[x0,x1];while(r.length<n)r.push(r[r.length-1]+r[r.length-2]);return r.slice(0,n);};}},
+  {t:2,hint:'บวกสลับสองค่า ครั้งหนึ่งบวกค่าแรก ครั้งต่อไปบวกอีกค่า',make:()=>{const a=rnd(1,15),p=rnd(2,9);let q=rnd(2,9);while(q===p)q=rnd(2,9);return n=>{const r=[a];for(let i=0;i<n-1;i++)r.push(r[i]+(i%2===0?p:q));return r;};}},
+  {t:2,hint:'ผลต่างของเลขแต่ละคู่ไม่เท่ากัน แต่ผลต่างนั้นเพิ่มขึ้นทีละเท่าๆ กัน',make:()=>{const a=rnd(1,10),d0=rnd(1,4),k=rnd(1,3);return n=>{const r=[a];for(let i=0;i<n-1;i++)r.push(r[i]+d0+k*i);return r;};}},
+  {t:3,hint:'แยกเลขตำแหน่งคี่กับตำแหน่งคู่ออกเป็นสองชุด แต่ละชุดมีกฎของตัวเอง',make:()=>{const a=rnd(1,9),d1=rnd(2,6),b=rnd(20,40),d2=rnd(1,5);return n=>Array.from({length:n},(_,i)=>i%2===0?a+d1*(i/2):b-d2*((i-1)/2));}},
+  {t:3,hint:'ตัวถัดไปคือตัวก่อนหน้าคูณแล้วบวกเลขคงที่',make:()=>{const m=pick([2,3]);const c=m===2?rnd(1,4):rnd(1,3);const x0=rnd(1,4);return n=>{const r=[x0];for(let i=0;i<n-1;i++)r.push(r[i]*m+c);return r;};}},
+  {t:3,hint:'ลองแยกดูว่าแต่ละตัวคือกำลังสามของอะไร',make:()=>{const c=rnd(1,3);return n=>Array.from({length:n},(_,i)=>Math.pow(i+c,3));}},
+  {t:4,hint:'เลขทุกตัวเป็นจำนวนเฉพาะเรียงต่อกัน',make:()=>{const s=rnd(0,5);return n=>PRIMES.slice(s,s+n);}},
+  {t:4,hint:'สลับระหว่างการคูณสองกับการบวกเลขคงที่',make:()=>{const a=rnd(1,4),k=rnd(1,5);return n=>{const r=[a];for(let i=0;i<n-1;i++)r.push(i%2===0?r[i]*2:r[i]+k);return r;};}},
+  {t:4,hint:'ผลต่างของเลขแต่ละคู่คือกำลังสองเรียงกัน 1, 4, 9, 16 ...',make:()=>{const a=rnd(1,10);return n=>{const r=[a];for(let i=0;i<n-1;i++)r.push(r[i]+(i+1)*(i+1));return r;};}}
+];
+function genSeqs(cfg){
+  const pool=shuffle(SEQ_GENS.filter(g=>g.t<=cfg.tier&&g.t>=Math.max(1,cfg.tier-1)));
+  const items=[];
+  for(let i=0;i<cfg.count;i++){
+    const g=pool[i%pool.length];
+    const terms=g.make()(cfg.shown+1);
+    items.push({shown:terms.slice(0,cfg.shown),answer:terms[cfg.shown],hint:g.hint,hintOn:false});
+  }
+  return items;
+}
+
+function camWatching(c,t){return t>=c.f&&((t-c.f)%c.p)<c.w;}
+function camValidStarts(cams,T){
+  const n=cams.length,res=[];
+  for(let s=0;s<=T-n;s++){let ok=true;for(let i=0;i<n;i++){if(camWatching(cams[i],s+i)){ok=false;break;}}if(ok)res.push(s);}
+  return res;
+}
+function genCam(cfg){
+  const n=cfg.n,T=cfg.T;
+  let best=null;
+  for(let tries=0;tries<4000;tries++){
+    const cams=[];
+    for(let i=0;i<n;i++){const p=rnd(3,6);const w=rnd(1,Math.min(3,p-1));cams.push({p,w,f:rnd(0,p-1)});}
+    const valid=camValidStarts(cams,T);
+    if(valid.length===1)return {cams,T,valid};
+    if(valid.length>=1&&!best)best={cams,T,valid};
+  }
+  return best;
+}
+
+function keyTruth(s,i,p){
+  switch(s.k){case'here':return p===i;case'nothere':return p!==i;case'in':return p===s.x;default:return p!==s.x;}
+}
+function stmtText(s,L){
+  switch(s.k){
+    case'here':return'กุญแจอยู่ในลิ้นชักนี้';
+    case'nothere':return'กุญแจไม่ได้อยู่ในลิ้นชักนี้';
+    case'in':return'กุญแจอยู่ในลิ้นชัก '+L[s.x];
+    default:return'กุญแจไม่ได้อยู่ในลิ้นชัก '+L[s.x];
+  }
+}
+function genKey(cfg){
+  const n=cfg.n,L='ABCDE'.slice(0,n).split('');
+  const target=cfg.rule==='one'?1:cfg.rule==='two'?2:n-1;
+  const kinds=['here','nothere','in','notin'];
+  for(let tries=0;tries<40000;tries++){
+    const st=[];
+    for(let i=0;i<n;i++){const k=pick(kinds);let x=null;if(k==='in'||k==='notin'){do{x=rnd(0,n-1);}while(x===i);}st.push({k,x});}
+    const sols=[];
+    for(let p=0;p<n;p++){let c=0;for(let i=0;i<n;i++)if(keyTruth(st[i],i,p))c++;if(c===target)sols.push(p);}
+    if(sols.length===1){
+      const ruleText=target===1?'ในป้ายทั้งหมด มีป้ายที่พูดจริงเพียง 1 ป้าย ที่เหลือโกหกหมด'
+        :target===2?'ในป้ายทั้งหมด มีป้ายที่พูดจริงเพียง 2 ป้าย ที่เหลือโกหกหมด'
+        :'ในป้ายทั้งหมด มีป้ายที่โกหกเพียง 1 ป้าย ที่เหลือพูดจริงทุกป้าย';
+      return {n,L,st,answer:sols[0],ruleText};
+    }
+  }
+  return cfg.rule==='one'?null:genKey({n:cfg.n,rule:'one'});
+}
+
+function lightsPress(board,size,i){
+  const r=Math.floor(i/size),c=i%size;
+  const t=(rr,cc)=>{if(rr<0||cc<0||rr>=size||cc>=size)return;board[rr*size+cc]=!board[rr*size+cc];};
+  t(r,c);t(r-1,c);t(r+1,c);t(r,c-1);t(r,c+1);
+}
+function genLights(cfg){
+  const n=cfg.size*cfg.size;
+  let last=null;
+  for(let tries=0;tries<300;tries++){
+    const cells=shuffle(Array.from({length:n},(_,i)=>i)).slice(0,cfg.k);
+    const board=Array(n).fill(false);
+    cells.forEach(i=>lightsPress(board,cfg.size,i));
+    last={size:cfg.size,board,init:board.slice(),solution:cells,limit:cfg.k+cfg.slack};
+    if(board.filter(Boolean).length>=3)return last;
+  }
+  return last;
+}
+
+const WIRE_COLORS=[{n:'แดง',c:'#d94a3d'},{n:'น้ำเงิน',c:'#3d6fd9'},{n:'เขียว',c:'#2fa35b'},{n:'เหลือง',c:'#e3b82a'},{n:'ขาว',c:'#e8ece9'},{n:'ม่วง',c:'#8a56c2'}];
+function wireOk(c,p,order){
+  const q=order.indexOf(c.x);
+  switch(c.k){case'not':return order[p]!==c.x;case'left':return p<q;case'right':return p>q;default:return Math.abs(p-q)===1;}
+}
+function wireText(c){
+  const nm=WIRE_COLORS[c.x].n;
+  switch(c.k){case'not':return'สายที่ต้องตัดไม่ใช่สี'+nm;case'left':return'สายที่ต้องตัดอยู่ทางซ้ายของสายสี'+nm;case'right':return'สายที่ต้องตัดอยู่ทางขวาของสายสี'+nm;default:return'สายที่ต้องตัดอยู่ติดกับสายสี'+nm;}
+}
+function genWires(n){
+  for(let tries=0;tries<5000;tries++){
+    const order=shuffle([0,1,2,3,4,5]).slice(0,n),ans=rnd(0,n-1),clues=[];
+    for(let k=0;k<6&&clues.length<4;k++){
+      const c={k:pick(['not','left','right','next']),x:pick(order)};
+      if(!wireOk(c,ans,order))continue;
+      clues.push(c);
+      const sols=[];for(let p=0;p<n;p++)if(clues.every(cl=>wireOk(cl,p,order)))sols.push(p);
+      if(sols.length===1)return {order,ans,clues:clues.map(wireText)};
+    }
+  }
+  return null;
+}
+function mmFeedback(code,guess){
+  let b=0,c=0;
+  guess.forEach((d,i)=>{if(code[i]===d)b++;else if(code.includes(d))c++;});
+  return {b,c};
+}
+function genCode(cfg){
+  const pool=[];for(let d=cfg.min;d<=cfg.max;d++)pool.push(d);
+  return {len:cfg.len,pool,code:shuffle(pool).slice(0,cfg.len),max:cfg.guesses};
+}
+</script>
+
+<script>
+(function(){
+'use strict';
+const $=s=>document.querySelector(s);
+const main=$('#main');
+
+/* ---------- ตั้งค่าโหมด ---------- */
+const BASE=[150,100,130,170,200]; // วินาทีของแต่ละครั้ง ก่อนคูณตัวคูณเวลาของโหมด
+const ORDER=['story','hard','insane','hell'];
+const MODES={
+  story:{id:'story',name:'ปกติ',guard:{speed:.5,range:3,rate:8},lives:Infinity,timeScale:0,wrong:5,hint:3,
+    desc:'ไม่จับเวลา ยามเดินช้า ถูกจับกี่ครั้งก็ลองใหม่ได้',
+    seq:{count:2,shown:5,tier:1},cam:{n:2,T:8,grid:true},key:{n:3,rule:'one'},lights:{size:3,k:3,slack:5},code:{len:3,min:1,max:4,guesses:12}},
+  hard:{id:'hard',name:'ยาก',guard:{speed:.6,range:3,rate:10},lives:10,timeScale:3,wrong:8,hint:4,
+    desc:'ยามเดินเร็วขึ้นนิดหน่อย มี 10 โอกาส และมีเวลาให้คิดเยอะ',
+    seq:{count:2,shown:5,tier:1},cam:{n:2,T:8,grid:true},key:{n:3,rule:'one'},lights:{size:3,k:3,slack:5},code:{len:3,min:1,max:4,guesses:12}},
+  insane:{id:'insane',name:'โคตรยาก',guard:{speed:.7,range:3.5,rate:12},lives:8,timeScale:2.5,wrong:10,hint:5,
+    desc:'ยามมองไกลขึ้นนิดหน่อย มี 8 โอกาส เวลายังเหลือเฟือ',
+    seq:{count:2,shown:5,tier:1},cam:{n:2,T:8,grid:true},key:{n:3,rule:'one'},lights:{size:3,k:3,slack:5},code:{len:3,min:1,max:4,guesses:12}},
+  hell:{id:'hell',name:'ยากมากๆ',guard:{speed:.8,range:3.5,rate:15},lives:5,timeScale:2,wrong:12,hint:6,
+    desc:'ยามเร็วที่สุด มี 5 โอกาส แต่ปริศนายังง่ายเหมือนเดิม',
+    seq:{count:2,shown:5,tier:1},cam:{n:2,T:8,grid:true},key:{n:3,rule:'one'},lights:{size:3,k:3,slack:5},code:{len:3,min:1,max:4,guesses:12}}
+};
+
+/* ---------- เนื้อเรื่อง ---------- */
+const STAGES=[
+  {title:'ประตูห้อง 407',place:'ห้องพัก ตึก 4',
+   story:'สามทุ่มครึ่ง ไฟทางเดินกะพริบตามจังหวะที่คุณคำนวณไว้ล่วงหน้าแล้ว ประตูห้อง 407 เพิ่งเปลี่ยนมาใช้ระบบรหัสลำดับตัวเลข ผู้ผลิตเขียนบนกล่องว่า "ปลอดภัยที่สุดในโรงพยาบาล" คุณอ่านจบแล้วก็มองออกทันทีว่าทุกชุดมีกฎซ่อนอยู่',
+   obstacle:'ประตูแสดงตัวเลขแต่ละชุดไม่ครบ เติมเลขถัดไปให้ถูกทุกชุดถึงจะเปิด',
+   clear:'ประตูเปิดออกด้วยเสียงคลิกเบาๆ ผู้ผลิตคงต้องแก้คำโฆษณาแล้ว'},
+  {title:'ทางเดินกล้องวงจรปิด',place:'ทางเดิน ตึก 4',
+   story:'ทางเดินยาวกว่าที่คิด กล้องวงจรปิดเรียงเป็นแถวและหันมองสลับกันตามจังหวะของมันเอง แผงควบคุมกล้องอยู่ข้างห้อง ชุดคำสั่งปิดกล้องจะแตะกล้องทีละตัว ตัวละหนึ่งวินาที ขอแค่ไม่มีตัวไหนจ้องอยู่ตอนถูกแตะก็พอ',
+   obstacle:'ตั้งเวลาเริ่มของชุดคำสั่งปิดกล้อง ให้มันแตะกล้องแต่ละตัวในจังหวะที่กล้องนั้นพัก',
+   clear:'คุณผ่านกล้องตัวสุดท้ายพอดี มันหันมาตอนที่คุณเลี้ยวพ้นมุมไปแล้ว'},
+  {title:'ห้องพยาบาล',place:'ชั้น 1 ตึกกลาง',
+   story:'กุญแจประตูทางออกอยู่ในลิ้นชักห้องพยาบาลลิ้นชักใดลิ้นชักหนึ่ง พยาบาลหัวหน้ากะแปะป้ายไว้ทุกลิ้นชัก แล้วเมาท์ให้ยามฟังเมื่อวานว่าป้ายพวกนี้พูดจริงกี่ป้าย โชคดีที่คุณแอบฟังอยู่ใต้โต๊ะ',
+   obstacle:'ใช้ข้อมูลที่แอบฟังมา วิเคราะห์ว่ากุญแจอยู่ลิ้นชักไหน เปิดผิดยามจะได้ยินเสียง',
+   clear:'กุญแจอยู่ในมือแล้ว ป้ายบนลิ้นชักที่เหลือยังโกหกต่อไปโดยไม่รู้ตัว'},
+  {title:'ห้องควบคุมไฟ',place:'ชั้นใต้ดิน',
+   story:'เพื่อให้กล้องมืดทั้งตึก คุณต้องตัดสายไฟหลักในตู้ควบคุม สายหลายสีเรียงเป็นแถวและมีเส้นเดียวที่เป็นสายหลัก โชคดีที่ช่างไฟขี้ลืมทิ้งโน้ตบอกใบ้ไว้บนตู้',
+   obstacle:'อ่านโน้ตของช่างไฟ แล้วตัดสายหลักให้ถูกเส้น ตัดผิดจะมีประกายไฟและยามเริ่มสงสัย',
+   clear:'ทั้งตึกมืดสนิท มีเสียงยามตะโกนว่า "ใครปิดไฟ" แล้วหัวหน้ากะตอบว่า "ไฟดับเอง"'},
+  {title:'ประตูใหญ่',place:'ทางออกหน้าโรงพยาบาล',
+   story:'ประตูหน้าโรงพยาบาลอยู่ตรงหน้าแล้ว ยามเปลี่ยนรหัสผ่านทุกกะ และทุกกะตั้งรหัสด้วยตัวเลขที่ไม่ซ้ำกันเพราะคู่มือเขียนไว้แบบนั้น ระบบจะบอกแค่ว่ากดถูกกี่ตัว แต่ถ้าคิดดีๆ แค่นั้นก็มากพอแล้ว',
+   obstacle:'เดารหัสจากผลตอบกลับ ● คือเลขถูกและอยู่ตำแหน่งถูก ○ คือมีเลขนั้นในรหัสแต่อยู่ผิดตำแหน่ง',
+   clear:'ล็อกเปิดออก'}
+];
+const CAUGHT=[
+  'ยามพูดว่า "คุณธีอีกแล้วเหรอครับ" แล้วพาคุณกลับห้อง',
+  'รองเท้าแตะของคุณเอี๊ยดขึ้นมาในจังหวะที่เงียบที่สุด',
+  'พยาบาลเตือนว่าอย่าวาดสมการบนผนังอีก แล้วส่งคุณกลับห้อง',
+  'ยามสงสัยตั้งแต่เห็นคุณเดินท่าตั้งใจเกินเหตุ',
+  'ท้องของคุณร้องดังกว่าสัญญาณเตือนภัย เพราะคิดถึงก๋วยเตี๋ยว',
+  'คุณอดไม่ได้ที่จะแก้สมการบนกระดานข่าวที่เดินผ่าน ยามเลยเห็นพอดี'
+];
+const WIN={
+  story:'ประตูใหญ่เปิดออก ลมกลางคืนพัดผ่านชุดผู้ป่วยของคุณ คุณวิ่งไปถึงร้านก๋วยเตี๋ยวป้าติ๋มตอนที่ร้านจะปิดในอีกห้านาที ป้าชิมน้ำซุปของตัวเอง นิ่งไปสามวินาที แล้วพูดว่า "ก็ใส่น้ำตาลเพิ่มไปนิดหน่อยจริงๆ แหละ" คุณพิสูจน์ได้แล้วว่าคำนวณถูก',
+  hard:'ยามแก้ระบบแล้วก็ยังเสียท่า คุณไปถึงร้านป้าติ๋มก่อนปิดอีกครั้ง ป้าเริ่มจำหน้าคุณได้ เลยไม่ต้องสั่งก็ได้ชามเดิม',
+  insane:'โรงพยาบาลเปลี่ยนทั้งระบบกล้อง ตู้กุญแจ และรหัส คุณยังเดินออกมาได้ ป้าติ๋มยื่นน้ำเปล่าให้หนึ่งแก้วแล้วถามว่า "คราวนี้หนีมายังไง" คุณตอบว่า "ยาวครับ"',
+  hell:'ไม่มีใครในโรงพยาบาลเข้าใจว่าคุณทำได้อย่างไร แม้แต่ตัวคุณเองก็เริ่มเชื่อแล้วว่า IQ 300 ไม่ใช่เรื่องโม้ ป้าติ๋มปิดร้านไปแล้ว แต่เปิดไฟให้คุณหนึ่งชาม'
+};
+
+/* ---------- สถานะเกม ---------- */
+let unlocked=false;
+try{unlocked=localStorage.getItem('iq300-unlocked')==='1';}catch(e){}
+const G={mode:null,stage:0,lives:0,caught:0,hints:0,playTime:0,S:null,timer:null,last:0,screen:'home',exitArm:false};
+/* ---------- โลกที่ตัวละครเดินได้ ---------- */
+const TS=32;
+/*MAPS_START*/
+const MAPS=[
+ {rows:[
+  "###################",
+  "#.....#...........#",
+  "#.....#..b..b..b..#",
+  "#.P...#...........#",
+  "#.....D...........#",
+  "#.....#...........E",
+  "#.T...#...........#",
+  "#.....#..b..b..b..#",
+  "#.....#...........#",
+  "#.....#...........#",
+  "###################"],
+  guards:[{pts:[[13,1],[13,9]],start:1}],
+  use:'ใช้แผงล็อกประตู',goal:'เดินไปที่แผงล็อกข้างประตู (จอเรืองแสง) แล้วกด E หรือปุ่มใช้แผง',
+  pal:{fa:'#cfd9d0',fb:'#c5d0c6',wall:'#46564e',top:'#6a7d73',furn:'#e6eee8',furn2:'#a9bdb0'}},
+ {rows:[
+  "###################",
+  "#...#.............#",
+  "#.P.#.............#",
+  "#...#.............#",
+  "#...#.....bbb.....#",
+  "#.T.D.............#",
+  "#...#.....bbb.....E",
+  "#...#.............#",
+  "#...#.............#",
+  "#...#.............#",
+  "###################"],
+  guards:[{pts:[[6,2],[17,2]],start:1}],
+  use:'ใช้แผงควบคุมกล้อง',goal:'เดินไปที่แผงควบคุมกล้อง แก้ปริศนาให้ประตูเปิด แล้วหลบยามไปที่ทางออกสีเขียว',
+  pal:{fa:'#c9d1c8',fb:'#bec8bf',wall:'#3f4d55',top:'#62747d',furn:'#9db0b8',furn2:'#74888f'}},
+ {rows:[
+  "###################",
+  "#.......#.........#",
+  "#.P.....#..bb.bb..#",
+  "#.......D.........#",
+  "#..T....#..bb.bb..#",
+  "#.......#.........#",
+  "#.......#.........E",
+  "#.......#..bb.bb..#",
+  "#.......#.........#",
+  "#.......#.........#",
+  "###################"],
+  guards:[{pts:[[16,1],[16,9]],start:0}],
+  use:'เปิดตู้ลิ้นชัก',goal:'ห้องนี้มียามเดินตรวจทั้งสองฝั่ง เดินไปที่ตู้ลิ้นชักแล้วหากุญแจให้เจอ',
+  pal:{fa:'#dfe6df',fb:'#d4ddd5',wall:'#4d6a60',top:'#7a9a8e',furn:'#b5cfc0',furn2:'#82a592'}},
+ {rows:[
+  "###################",
+  "#.................#",
+  "#.P...............#",
+  "#.................#",
+  "#...bb.......bb...#",
+  "#...bb.......bb.T.#",
+  "#########D#########",
+  "#.................#",
+  "#.................#",
+  "#E................#",
+  "###################"],
+  guards:[{pts:[[1,3],[17,3]],start:1}],
+  use:'ใช้ตู้ควบคุมไฟ',goal:'ชั้นใต้ดินมืดและเย็น เดินไปที่ตู้ควบคุมไฟมุมขวา แล้วหลบยามลงไปทางประตูกลาง',
+  pal:{fa:'#8f9b94',fb:'#849189',wall:'#2b3531',top:'#44534c',furn:'#6a7a72',furn2:'#4c5b54'}},
+ {rows:[
+  "###################",
+  "#................##",
+  "#.P..............##",
+  "#.....bbb..bbb...##",
+  "#................##",
+  "#.......T........DE",
+  "#................##",
+  "#.....bbb..bbb...##",
+  "#................##",
+  "#................##",
+  "###################"],
+  guards:[{pts:[[4,1],[4,9]],start:1},{pts:[[15,1],[15,9]],start:1}],
+  use:'ใช้แผงรหัสประตู',goal:'ลานหน้าโรงพยาบาลมียามสามคน เดินไปที่แผงรหัสกลางลาน แล้ววิ่งไปที่ประตูใหญ่ทางขวา',
+  pal:{fa:'#b8c7a9',fb:'#aebf9e',wall:'#434a41',top:'#6b7566',furn:'#8d9479',furn2:'#6c7358'}}
+];
+/*MAPS_END*/
+let W=null;
+
+const solidCh=c=>c==='#'||c==='b'||c==='T'||c==='D';
+const sightCh=c=>c==='#'||c==='b'||c==='D';
+function chAt(x,y){if(!W||y<0||x<0||y>=W.rows||x>=W.cols)return '#';return W.grid[y][x];}
+function solidAt(x,y){return solidCh(chAt(Math.floor(x),Math.floor(y)));}
+function hitsWall(x,y){const r=0.28;return solidAt(x-r,y-r)||solidAt(x+r,y-r)||solidAt(x-r,y+r)||solidAt(x+r,y+r);}
+function los(x0,y0,x1,y1){
+  const dx=x1-x0,dy=y1-y0,d=Math.hypot(dx,dy),n=Math.max(2,Math.ceil(d/0.12));
+  for(let k=1;k<n;k++){const x=x0+dx*k/n,y=y0+dy*k/n;if(sightCh(chAt(Math.floor(x),Math.floor(y))))return false;}
+  return true;
+}
+const FOV=0.6; // ครึ่งมุมมอง (เรเดียน) ประมาณ 41 องศา
+function guardSees(g,R){
+  const dx=W.px-g.x,dy=W.py-g.y,d=Math.hypot(dx,dy);
+  if(d>R)return false;
+  if(d<0.05)return true;
+  if((dx*g.fx+dy*g.fy)/d<Math.cos(FOV))return false;
+  return los(g.x,g.y,W.px,W.py);
+}
+function moveGuard(g,dist){
+  let left=dist,guard=0;
+  while(left>1e-6&&guard++<8){
+    let ni=g.i+g.dir;if(ni<0||ni>=g.pts.length){g.dir*=-1;ni=g.i+g.dir;}
+    const tx=g.pts[ni][0],ty=g.pts[ni][1],dx=tx-g.x,dy=ty-g.y,d=Math.hypot(dx,dy);
+    if(d<1e-6){g.i=ni;continue;}
+    g.fx=dx/d;g.fy=dy/d;
+    if(d<=left){g.x=tx;g.y=ty;g.i=ni;left-=d;}else{g.x+=g.fx*left;g.y+=g.fy*left;left=0;}
+  }
+}
+function setGoal(t){const e=$('#goal');if(e)e.textContent=t;}
+
+function initWorld(){
+  const def=MAPS[G.stage];
+  const grid=def.rows.map(r=>r.split(''));
+  let P=[1,1],T=null,D=null;
+  grid.forEach((r,y)=>r.forEach((c,x)=>{if(c==='P'){P=[x,y];r[x]='.';}else if(c==='T')T=[x,y];else if(c==='D')D=[x,y];}));
+  const cv=$('#world');cv.width=grid[0].length*TS;cv.height=grid.length*TS;
+  W={grid,cols:grid[0].length,rows:grid.length,T,D,doorOpen:false,solved:false,puzzleOpen:false,near:false,
+     px:P[0]+.5,py:P[1]+.5,face:[0,1],walk:0,moving:false,cv,ctx:cv.getContext('2d'),keys:{},pad:{},last:performance.now(),raf:0,t:0,
+     guards:def.guards.map(g=>{
+       const pts=g.pts.map(p=>[p[0]+.5,p[1]+.5]),i=g.start||0,dir=i===0?1:-1,nx=pts[i+dir];
+       const dx=nx[0]-pts[i][0],dy=nx[1]-pts[i][1],d=Math.hypot(dx,dy)||1;
+       return {pts,i,dir,x:pts[i][0],y:pts[i][1],fx:dx/d,fy:dy/d,sees:false};
+     })};
+  setGoal(def.goal);
+  const b=$('#useBtn');if(b)b.textContent=def.use+' (E)';
+  W.raf=requestAnimationFrame(loop);
+}
+function loop(now){
+  if(!W||G.screen!=='play')return;
+  const dt=Math.min((now-W.last)/1000,0.05);W.last=now;W.t+=dt;
+  if(!W.puzzleOpen)updateWorld(dt);
+  if(G.screen!=='play')return;
+  drawWorld();
+  W.raf=requestAnimationFrame(loop);
+}
+function updateWorld(dt){
+  const m=mode(),gp=m.guard,S=G.S;
+  let dx=(W.keys.r||W.pad.r?1:0)-(W.keys.l||W.pad.l?1:0);
+  let dy=(W.keys.d||W.pad.d?1:0)-(W.keys.u||W.pad.u?1:0);
+  W.moving=dx!==0||dy!==0;
+  if(W.moving){
+    const n=Math.hypot(dx,dy);dx/=n;dy/=n;W.face=[dx,dy];W.walk+=dt;
+    const sp=4.2*dt;
+    if(!hitsWall(W.px+dx*sp,W.py))W.px+=dx*sp;
+    if(!hitsWall(W.px,W.py+dy*sp))W.py+=dy*sp;
+  }
+  let seen=false;
+  for(const g of W.guards){
+    moveGuard(g,gp.speed*dt);
+    g.sees=guardSees(g,gp.range);
+    if(g.sees)seen=true;
+    if(Math.hypot(W.px-g.x,W.py-g.y)<0.5){caught('ยามเดินมาชนคุณพอดี แล้วพาตัวกลับห้องทันที');return;}
+  }
+  if(seen){if(addSusp(gp.rate*dt))return;}
+  else if(m.timeScale===0&&S.susp>0){S.susp=Math.max(0,S.susp-6*dt);updateMeter();}
+  const near=!W.solved&&Math.hypot(W.px-(W.T[0]+.5),W.py-(W.T[1]+.5))<1.8;
+  if(near!==W.near){W.near=near;const b=$('#useBtn');if(b)b.disabled=!near;}
+  if(W.doorOpen&&chAt(Math.floor(W.px),Math.floor(W.py))==='E'){clearStage();}
+}
+function openPuzzle(){
+  if(!W||G.screen!=='play'||W.puzzleOpen||!W.near)return;
+  W.puzzleOpen=true;W.keys={};W.pad={};
+  $('#worldbox').hidden=true;$('#puzzlebox').hidden=false;
+  renderStage();
+  const f=$('#seqAns');if(f)f.focus();
+  window.scrollTo(0,0);
+}
+function closePuzzle(){
+  if(!W||!W.puzzleOpen)return;
+  W.puzzleOpen=false;W.last=performance.now();
+  $('#puzzlebox').hidden=true;$('#worldbox').hidden=false;
+}
+function solved(){
+  if(!W)return;
+  W.solved=true;W.doorOpen=true;W.near=false;
+  if(W.D)W.grid[W.D[1]][W.D[0]]='.';
+  const b=$('#useBtn');if(b){b.disabled=true;b.textContent='แก้เสร็จแล้ว';}
+  closePuzzle();
+  setGoal('ปลดล็อกแล้ว ประตูเปิดออก เดินไปที่ช่องทางออกสีเขียวให้ทันก่อนยามเห็น');
+}
+
+const KEYMAP={ArrowUp:'u',KeyW:'u',ArrowDown:'d',KeyS:'d',ArrowLeft:'l',KeyA:'l',ArrowRight:'r',KeyD:'r'};
+document.addEventListener('keydown',e=>{
+  if(!W||G.screen!=='play')return;
+  if(e.code==='Escape'&&W.puzzleOpen){closePuzzle();return;}
+  if(W.puzzleOpen)return;
+  const k=KEYMAP[e.code];
+  if(k){W.keys[k]=true;e.preventDefault();return;}
+  if(e.code==='KeyE'){e.preventDefault();openPuzzle();}
+});
+document.addEventListener('keyup',e=>{const k=KEYMAP[e.code];if(k&&W)W.keys[k]=false;});
+window.addEventListener('blur',()=>{if(W){W.keys={};W.pad={};}});
+document.addEventListener('pointerdown',e=>{
+  const b=e.target.closest('[data-dir]');
+  if(b&&W&&!W.puzzleOpen){W.pad[b.dataset.dir]=true;e.preventDefault();}
+});
+const padOff=()=>{if(W)W.pad={};};
+document.addEventListener('pointerup',padOff);
+document.addEventListener('pointercancel',padOff);
+
+/* ---------- วาดฉาก ---------- */
+function drawWorld(){
+  const ctx=W.ctx,p=MAPS[G.stage].pal,pulse=(Math.sin(W.t*4)+1)/2;
+  ctx.clearRect(0,0,W.cols*TS,W.rows*TS);
+  for(let y=0;y<W.rows;y++)for(let x=0;x<W.cols;x++){
+    const c=W.grid[y][x],px=x*TS,py=y*TS;
+    if(c==='#'){
+      ctx.fillStyle=p.wall;ctx.fillRect(px,py,TS,TS);
+      if(chAt(x,y+1)!=='#'){ctx.fillStyle=p.top;ctx.fillRect(px,py+TS-9,TS,9);}
+      continue;
+    }
+    ctx.fillStyle=(x+y)%2?p.fa:p.fb;ctx.fillRect(px,py,TS,TS);
+    if(c==='b'){
+      ctx.fillStyle='rgba(0,0,0,.2)';ctx.fillRect(px+4,py+6,TS-4,TS-5);
+      ctx.fillStyle=p.furn;ctx.fillRect(px+2,py+2,TS-4,TS-7);
+      ctx.fillStyle=p.furn2;ctx.fillRect(px+2,py+TS-9,TS-4,4);
+    }else if(c==='D'){
+      ctx.fillStyle='#7a4b24';ctx.fillRect(px+3,py+1,TS-6,TS-2);
+      ctx.fillStyle='#5a3416';for(let k=0;k<3;k++)ctx.fillRect(px+6,py+4+k*9,TS-12,3);
+      ctx.fillStyle='#f0c43a';ctx.fillRect(px+11,py+12,10,9);
+      ctx.strokeStyle='#f0c43a';ctx.lineWidth=2;ctx.beginPath();ctx.arc(px+16,py+12,4,Math.PI,0);ctx.stroke();
+    }else if(c==='E'){
+      ctx.fillStyle=W.doorOpen?'rgba(60,200,110,'+(0.5+0.35*pulse)+')':'rgba(60,200,110,.22)';
+      ctx.fillRect(px,py,TS,TS);
+      ctx.fillStyle=W.doorOpen?'#06311a':'#2f5a40';ctx.font='700 12px Sarabun,sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
+      ctx.fillText('ออก',px+TS/2,py+TS/2);
+    }else if(c==='T'){
+      ctx.fillStyle='rgba(0,0,0,.25)';ctx.fillRect(px+5,py+6,TS-6,TS-5);
+      ctx.fillStyle='#1b2430';ctx.fillRect(px+3,py+3,TS-6,TS-6);
+      ctx.fillStyle=W.solved?'#3be38a':'rgba(90,200,255,'+(0.55+0.45*pulse)+')';ctx.fillRect(px+7,py+7,TS-14,TS-17);
+      ctx.fillStyle='#46566b';ctx.fillRect(px+7,py+TS-9,TS-14,3);
+    }
+  }
+  // กรวยสายตา
+  const gp=mode().guard;
+  for(const g of W.guards){
+    const a0=Math.atan2(g.fy,g.fx);
+    ctx.beginPath();ctx.moveTo(g.x*TS,g.y*TS);
+    for(let k=0;k<=18;k++){
+      const a=a0-FOV+2*FOV*k/18,cx=Math.cos(a),cy=Math.sin(a);let d=0;
+      while(d<gp.range){const nd=d+0.12;if(sightCh(chAt(Math.floor(g.x+cx*nd),Math.floor(g.y+cy*nd))))break;d=nd;}
+      ctx.lineTo((g.x+cx*d)*TS,(g.y+cy*d)*TS);
+    }
+    ctx.closePath();ctx.fillStyle=g.sees?'rgba(255,40,30,.42)':'rgba(255,200,60,.22)';ctx.fill();
+  }
+  // ยาม
+  for(const g of W.guards){
+    const x=g.x*TS,y=g.y*TS,bob=Math.sin(W.t*8+g.x)*1.5;
+    ctx.fillStyle='rgba(0,0,0,.25)';ctx.beginPath();ctx.ellipse(x,y+11,10,4,0,0,7);ctx.fill();
+    ctx.fillStyle='#1f2b45';ctx.fillRect(x-8,y-8+bob,16,17);
+    ctx.fillStyle='#e8c9a4';ctx.beginPath();ctx.arc(x,y-12+bob,7,0,7);ctx.fill();
+    ctx.fillStyle='#c43a30';ctx.fillRect(x-8,y-20+bob,16,6);
+    ctx.fillStyle='#15171c';ctx.fillRect(x+g.fx*3-3,y-12+bob+g.fy*2,2,3);ctx.fillRect(x+g.fx*3+2,y-12+bob+g.fy*2,2,3);
+    ctx.fillStyle='#f0c43a';ctx.fillRect(x-3,y-3+bob,6,4);
+    if(g.sees){ctx.fillStyle='#ff3b2e';ctx.font='700 20px Sarabun,sans-serif';ctx.textAlign='center';ctx.textBaseline='alphabetic';ctx.fillText('!',x,y-26);}
+  }
+  // ผู้เล่น
+  const x=W.px*TS,y=W.py*TS,sw=W.moving?Math.sin(W.walk*14)*4:0;
+  ctx.fillStyle='rgba(0,0,0,.25)';ctx.beginPath();ctx.ellipse(x,y+11,9,4,0,0,7);ctx.fill();
+  ctx.fillStyle='#8a6a52';ctx.fillRect(x-6,y+5+sw*0.5,5,7);ctx.fillRect(x+1,y+5-sw*0.5,5,7);
+  ctx.fillStyle='#a6d8ee';ctx.fillRect(x-8,y-8,16,15);
+  ctx.fillStyle='#7fb9d4';ctx.fillRect(x-8,y+2,16,2);
+  ctx.fillStyle='#e8c9a4';ctx.fillRect(x-11,y-7-sw*0.4,3,9);ctx.fillRect(x+8,y-7+sw*0.4,3,9);
+  ctx.fillStyle='#f0cfa8';ctx.beginPath();ctx.arc(x,y-13,7,0,7);ctx.fill();
+  ctx.fillStyle='#2a2320';ctx.beginPath();ctx.arc(x,y-14,7.5,Math.PI,0);ctx.fill();
+  ctx.fillRect(x-7.5,y-14,3,5);
+  if(W.face[1]<=0.5){ctx.fillStyle='#15171c';ctx.fillRect(x+W.face[0]*3-3.5,y-13+W.face[1]*1.5,2,3);ctx.fillRect(x+W.face[0]*3+1.5,y-13+W.face[1]*1.5,2,3);}
+  // ปุ่มบอกให้กด E
+  if(W.near&&!W.solved){
+    const tx=(W.T[0]+.5)*TS,ty=W.T[1]*TS-8;
+    ctx.fillStyle='#fff';ctx.strokeStyle='#15201a';ctx.lineWidth=2;
+    ctx.beginPath();ctx.rect(tx-11,ty-12,22,22);ctx.fill();ctx.stroke();
+    ctx.fillStyle='#15201a';ctx.font='700 15px IBM Plex Mono,monospace';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('E',tx,ty-1);
+  }
+}
+
+
+const fmt=sec=>{const s=Math.round(sec);return Math.floor(s/60)+':'+String(s%60).padStart(2,'0');};
+const mode=()=>MODES[G.mode];
+
+/* ---------- ส่วนบนของจอเกม ---------- */
+function topbar(extraDone){
+  const m=mode();
+  const lives=m.lives===Infinity
+    ?'<span class="lives" aria-label="โอกาสไม่จำกัด">∞</span>'
+    :'<span class="lives" role="img" aria-label="เหลือโอกาส '+G.lives+' จาก '+m.lives+'">'+Array.from({length:m.lives},(_,i)=>'<i class="'+(i<G.lives?'on':'')+'"></i>').join('')+'</span>';
+  const done=G.stage+(extraDone||0);
+  const steps=Array.from({length:5},(_,i)=>'<i class="'+(i<done?'done':i===G.stage&&!extraDone?'cur':'')+'"></i>').join('');
+  return '<div class="topbar"><div class="who"><span class="hn">แฟ้ม 0300</span>ธีรภัทร์ สมองเพชร</div>'
+    +'<div class="meta"><span class="badge">'+m.name+'</span><span>โอกาส '+lives+'</span><span>ถูกจับ <b class="mono">'+G.caught+'</b></span>'
+    +'<button class="btn-link" data-act="home">หน้าแรก</button></div>'
+    +'<div class="steps" role="img" aria-label="ครั้งที่ '+(G.stage+1)+' จาก 5">'+steps+'</div></div>';
+}
+
+/* ---------- หน้าแรก ---------- */
+function showHome(){
+  stopTimer();G.screen='home';G.S=null;
+  const modes=ORDER.map(id=>{
+    const m=MODES[id],locked=id!=='story'&&!unlocked;
+    return '<button class="mode'+(locked?' locked':'')+'" data-act="begin" data-mode="'+id+'"'+(locked?' disabled':'')+'>'
+      +'<span class="mname">'+m.name+'</span><span class="mdesc">'+m.desc+'</span>'
+      +'<span class="mstate">'+(locked?'ล็อก · หนีสำเร็จในโหมดปกติก่อน':id==='story'?'เริ่มได้เลย':'ปลดล็อกแล้ว')+'</span></button>';
+  }).join('');
+  main.innerHTML=
+   '<header class="hero"><p class="eyebrow mono">โรงพยาบาลสวนสติหลุด · ตึก 4 · ห้อง 407</p>'
+  +'<h1>IQ 300 แหกโรงบาล</h1>'
+  +'<p class="lede">คุณคือคนไข้ที่ฉลาดที่สุดในตึก และเป็นคนเดียวที่ไม่มีใครเชื่อ</p></header>'
+  +'<div class="cols">'
+  +'<section class="folder"><div class="ftab">แฟ้มผู้ป่วยใน</div><div class="card"><dl class="profile">'
+  +'<div><dt>ชื่อ</dt><dd>ธีรภัทร์ สมองเพชร (เรียกกันว่า "ธี")</dd></div>'
+  +'<div><dt>อายุ</dt><dd>29 ปี</dd></div>'
+  +'<div><dt>IQ</dt><dd><span class="iq mono">300</span> <span class="muted small">ตามที่ผู้ป่วยแจ้งเอง</span></dd></div>'
+  +'<div><dt>สถานที่</dt><dd>โรงพยาบาลสวนสติหลุด ตึก 4 ห้อง 407</dd></div>'
+  +'<div><dt>สาเหตุที่ถูกส่งตัว</dt><dd>ในงานเลี้ยงรุ่น คุณประกาศว่าคำนวณได้ว่าก๋วยเตี๋ยวป้าติ๋มปากซอยใส่น้ำตาลเกินสูตรเดิม 3.7% แล้ววาดสมการยาวสามเมตรบนผนังร้าน ทุกคนสรุปว่าคุณบ้า ญาติจึงลงนามส่งตัวเข้ามา</dd></div>'
+  +'<div><dt>ประวัติ</dt><dd>พยายามหนีมาแล้วเก้ารอบ โดนจับทั้งเก้ารอบเพราะลืมคิดอะไรสักอย่าง คืนนี้คุณมีแผนใหม่ที่เขียนซ่อนไว้ใต้ฟูก</dd></div>'
+  +'</dl></div></section>'
+  +'<section class="folder"><div class="ftab">วิธีเล่น</div><div class="card"><dl class="howto">'
+  +'<div><dt>ห้าครั้งของการหนี</dt><dd>แต่ละครั้งเจออุปสรรคคนละแบบ คือถอดรหัสตัวเลข หลบกล้อง หากุญแจ ตัดสายไฟ และเจาะรหัสประตูใหญ่</dd></div>'
+  +'<div><dt>บังคับตัวละคร</dt><dd>เดินด้วยปุ่มลูกศรหรือ WASD บนมือถือใช้ปุ่มทิศทางใต้แผนที่ เดินเข้าใกล้แผงแล้วกด E หรือปุ่มใช้แผง ยามที่มองเห็นคุณทำให้ความสงสัยพุ่ง และถ้าโดนตัวจะถูกจับทันที</dd></div>'
+  +'<div><dt>ความสงสัยของยาม</dt><dd>ขึ้นทุกครั้งที่คุณตอบผิดหรือขอใบ้ และในโหมดยากจะขึ้นเองตามเวลาด้วย เต็ม 100% คือถูกจับ</dd></div>'
+  +'<div><dt>ถูกจับ</dt><dd>เสียหนึ่งโอกาส แล้วเจอโจทย์ใหม่ในครั้งเดิม ถ้าโอกาสหมดต้องเริ่มใหม่ตั้งแต่ครั้งแรก</dd></div>'
+  +'<div><dt>หนีสำเร็จ</dt><dd>ผ่านครบห้าครั้งเพื่อปลดล็อกโหมด ยาก โคตรยาก และยากมากๆ</dd></div>'
+  +'</dl></div></section></div>'
+  +'<section class="mission"><span class="lbl">ภารกิจ</span><p>หนีออกจากโรงพยาบาลให้ได้ในคืนนี้ ฝ่าอุปสรรคทั้งห้าครั้ง แล้ววิ่งไปให้ถึงร้านก๋วยเตี๋ยวป้าติ๋มก่อนร้านปิดสี่ทุ่ม เพื่อพิสูจน์ว่าคุณคำนวณถูก และกินชามนั้นให้ได้</p></section>'
+  +'<section class="folder"><div class="ftab">เลือกโหมด</div><div class="card"><div class="modes">'+modes+'</div></div></section>';
+  window.scrollTo(0,0);
+}
+
+/* ---------- เริ่มเกม / ฉากเกริ่นแต่ละครั้ง ---------- */
+function startMode(id){
+  G.mode=id;G.stage=0;G.lives=MODES[id].lives;G.caught=0;G.hints=0;G.playTime=0;
+  brief();
+}
+function brief(){
+  stopTimer();G.screen='brief';G.S=null;
+  const st=STAGES[G.stage],m=mode();
+  const timeLine=m.timeScale>0
+    ?'ยามจะมาถึงในประมาณ <b>'+Math.round(BASE[G.stage]*m.timeScale)+' วินาที</b> ถ้าคุณไม่ตอบผิดหรือขอใบ้'
+    :'โหมดนี้ไม่จับเวลา คิดได้เต็มที่';
+  main.innerHTML=topbar()
+  +'<section class="folder"><div class="ftab">ครั้งที่ '+(G.stage+1)+' / 5 · '+st.place+'</div><div class="card">'
+  +'<h2 class="h">'+st.title+'</h2><p class="story">'+st.story+'</p>'
+  +'<div class="obst"><span class="lbl">อุปสรรค</span><p>'+st.obstacle+'</p></div>'
+  +'<ul class="rules"><li>เดินด้วยลูกศร/WASD หรือปุ่มใต้แผนที่ เข้าใกล้แผงแล้วกด E เพื่อแก้ปริศนา สายตาของยามเป็นกรวยสีเหลือง ถ้ามันเห็นคุณความสงสัยจะพุ่ง และถ้าโดนตัวจะถูกจับทันที</li><li>'+timeLine+'</li><li>ตอบผิดหรือเลือกผิด ความสงสัย +'+m.wrong+'%</li><li>ขอใบ้ ความสงสัย +'+m.hint+'%</li></ul>'
+  +'<div class="actions"><button class="btn primary" data-act="go">ลงมือ</button></div></div></section>';
+  window.scrollTo(0,0);
+}
+
+function beginStage(){
+  const m=mode(),i=G.stage;
+  const S={susp:0,msg:''};
+  G.S=S;
+  if(i===0){S.seq={items:genSeqs(m.seq),cur:0};}
+  if(i===1){S.cam=genCam(m.cam);S.sel=null;S.out=new Set();}
+  if(i===2){S.key=genKey(m.key);S.out=new Map();}
+  if(i===3){S.wires=genWires(3);S.wires.out=new Set();}
+  if(i===4){S.mm=genCode(m.code);S.mm.hist=[];S.mm.cur=[];S.mm.excl=new Set();}
+  G.screen='play';
+  main.innerHTML=topbar()
+  +'<section class="folder"><div class="ftab">ครั้งที่ '+(i+1)+' / 5 · '+STAGES[i].title+'</div><div class="card" id="playcard">'
+  +'<div class="meter-wrap"><div class="mrow"><span>ความสงสัยของยาม</span><b class="mono" id="mnum">0%</b></div>'
+  +'<div class="meter" id="meter" role="progressbar" aria-label="ความสงสัยของยาม" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="fill calm" id="mfill"></div></div>'
+  +'<div class="mtime" id="mtime"></div></div>'
+  +'<p class="goal" id="goal" aria-live="polite"></p>'
+  +'<div id="worldbox"><div class="canvaswrap"><canvas id="world" role="img" aria-label="แผนที่โรงพยาบาลมองจากด้านบน"></canvas></div>'
+  +'<div class="ctrls"><div class="dpad"><button class="u" data-dir="u" aria-label="เดินขึ้น">▲</button><button class="l" data-dir="l" aria-label="เดินซ้าย">◀</button><button class="d" data-dir="d" aria-label="เดินลง">▼</button><button class="r" data-dir="r" aria-label="เดินขวา">▶</button></div>'
+  +'<p class="muted small kb">เดิน: ลูกศรหรือ WASD · ใช้แผง: E</p>'
+  +'<button class="btn primary" id="useBtn" data-act="use" disabled>ใช้แผง (E)</button></div></div>'
+  +'<div id="puzzlebox" hidden><div class="pz-head"><b>หน้าจอแผง</b><button class="btn ghost" data-act="close-puzzle">ถอยออกมา (Esc)</button></div><div id="stagebody"></div></div>'
+  +'<div class="foot"><button class="btn ghost" data-act="hint">ขอใบ้ (ความสงสัย +'+m.hint+'%)</button></div></div></section>';
+  renderStage();updateMeter();startTimer();initWorld();
+  window.scrollTo(0,0);
+}
+
+/* ---------- ตัวจับเวลาและมาตรวัด ---------- */
+function stopTimer(){if(G.timer){clearInterval(G.timer);G.timer=null;}if(W&&W.raf){cancelAnimationFrame(W.raf);W.raf=0;}}
+function startTimer(){stopTimer();G.last=performance.now();G.timer=setInterval(tick,250);}
+function tick(){
+  const now=performance.now(),dt=Math.min(now-G.last,600)/1000;G.last=now;
+  const S=G.S;if(!S||G.screen!=='play')return;
+  G.playTime+=dt;
+  const m=mode();
+  if(m.timeScale>0)S.susp=Math.min(100,S.susp+dt*100/(BASE[G.stage]*m.timeScale));
+  updateMeter();
+  if(S.susp>=100)caught();
+}
+function updateMeter(){
+  const S=G.S,f=$('#mfill');if(!S||!f)return;
+  const v=Math.min(100,S.susp);
+  f.style.width=v+'%';
+  f.className='fill '+(v>=80?'danger':v>=50?'warn':'calm');
+  $('#mnum').textContent=Math.floor(v)+'%';
+  $('#meter').setAttribute('aria-valuenow',String(Math.floor(v)));
+  const m=mode(),t=$('#mtime');
+  if(t){
+    if(m.timeScale>0){const rate=100/(BASE[G.stage]*m.timeScale);t.textContent='ยามมาถึงในอีกประมาณ '+Math.max(0,Math.ceil((100-v)/rate))+' วินาที';}
+    else t.textContent='ไม่จับเวลา';
+  }
+}
+function addSusp(n){
+  const S=G.S;S.susp=Math.min(100,S.susp+n);updateMeter();
+  if(S.susp>=100){caught();return true;}
+  return false;
+}
+function shake(){const c=$('#playcard');if(!c)return;c.classList.remove('shake');void c.offsetWidth;c.classList.add('shake');}
+
+/* ---------- ถูกจับ / จบเกม / ผ่าน / ชนะ ---------- */
+function caught(reason){
+  if(G.screen!=='play')return;
+  stopTimer();G.screen='caught';G.caught++;
+  const m=mode();
+  if(m.lives!==Infinity)G.lives--;
+  const line=reason||pick(CAUGHT);
+  if(m.lives!==Infinity&&G.lives<=0){gameOver(line);return;}
+  const left=m.lives===Infinity?'ไม่จำกัด':String(G.lives);
+  main.innerHTML=topbar()
+  +'<section class="folder"><div class="ftab">ครั้งที่ '+(G.stage+1)+' · ล้มเหลว</div><div class="card result">'
+  +'<span class="stamp">ถูกจับ</span><p class="lead">'+line+'</p>'
+  +'<p class="muted">คุณถูกส่งกลับห้อง โอกาสที่เหลือ: <b class="mono">'+left+'</b> โจทย์ของ "'+STAGES[G.stage].title+'" ถูกสลับใหม่หมด</p>'
+  +'<div class="actions"><button class="btn primary" data-act="retry">ลองหนีใหม่</button><button class="btn ghost" data-act="home">กลับหน้าแรก</button></div></div></section>';
+  window.scrollTo(0,0);
+}
+function gameOver(line){
+  G.screen='over';
+  main.innerHTML=topbar()
+  +'<section class="folder"><div class="ftab">โอกาสหมด</div><div class="card result">'
+  +'<span class="stamp">จบเกม</span><p class="lead">'+line+'</p>'
+  +'<p class="muted">คุณถูกย้ายไปห้องขังพิเศษที่ตึก 9 ต้องวางแผนใหม่ตั้งแต่ครั้งที่ 1 (จับกุมทั้งหมด '+G.caught+' ครั้ง)</p>'
+  +'<div class="actions"><button class="btn primary" data-act="begin" data-mode="'+G.mode+'">เริ่มแผนใหม่</button><button class="btn ghost" data-act="home">กลับหน้าแรก</button></div></div></section>';
+  window.scrollTo(0,0);
+}
+function clearStage(){
+  stopTimer();G.screen='clear';
+  const st=STAGES[G.stage],last=G.stage===4;
+  main.innerHTML=topbar(1)
+  +'<section class="folder"><div class="ftab">ครั้งที่ '+(G.stage+1)+' · สำเร็จ</div><div class="card result">'
+  +'<span class="stamp ok">ผ่าน</span><p class="lead">'+st.clear+'</p>'
+  +'<p class="muted small">ความสงสัยของยามตอนผ่าน '+Math.floor(G.S.susp)+'%</p>'
+  +'<div class="actions"><button class="btn primary" data-act="next">'+(last?'ออกไปทางประตูใหญ่':'ไปครั้งที่ '+(G.stage+2))+'</button></div></div></section>';
+  window.scrollTo(0,0);
+}
+function win(){
+  stopTimer();G.screen='win';
+  let newly=false;
+  if(G.mode==='story'&&!unlocked){unlocked=true;newly=true;try{localStorage.setItem('iq300-unlocked','1');}catch(e){}}
+  const others=ORDER.filter(id=>id!=='story'&&id!==G.mode).map(id=>
+    '<button class="mode" data-act="begin" data-mode="'+id+'"><span class="mname">'+MODES[id].name+'</span><span class="mdesc">'+MODES[id].desc+'</span></button>').join('');
+  main.innerHTML=
+   '<div class="topbar"><div class="who"><span class="hn">แฟ้ม 0300</span>ธีรภัทร์ สมองเพชร</div><div class="meta"><span class="badge">'+mode().name+'</span></div><div class="steps">'+'<i class="done"></i>'.repeat(5)+'</div></div>'
+  +'<section class="folder"><div class="ftab">หนีสำเร็จ</div><div class="card result">'
+  +'<span class="stamp ok">หนีได้แล้ว</span><p class="lead">'+WIN[G.mode]+'</p>'
+  +'<div class="stats"><div><span class="muted small">ถูกจับ</span><b>'+G.caught+' ครั้ง</b></div><div><span class="muted small">ขอใบ้</span><b>'+G.hints+' ครั้ง</b></div><div><span class="muted small">เวลารวม</span><b>'+fmt(G.playTime)+'</b></div></div>'
+  +(newly?'<p class="unlock">ปลดล็อกแล้ว: ยาก, โคตรยาก และยากมากๆ ข่าวหลุดว่าคุณหนีได้ โรงพยาบาลเลยอัปเกรดระบบรักษาความปลอดภัยทั้งสามระดับ</p>':'')
+  +'<h3>หนีอีกครั้งในโหมดไหน</h3><div class="nextmodes">'+others+'<button class="mode" data-act="begin" data-mode="'+G.mode+'"><span class="mname">เล่นโหมดนี้ซ้ำ</span><span class="mdesc">'+mode().name+' โจทย์ชุดใหม่ทั้งหมด</span></button></div>'
+  +'<div class="actions"><button class="btn ghost" data-act="home">กลับหน้าแรก</button></div></div></section>';
+  window.scrollTo(0,0);
+}
+
+/* ---------- วาดโจทย์ตามครั้ง ---------- */
+function renderStage(){
+  const S=G.S;if(!S)return;
+  const fn=[renderSeq,renderCam,renderKey,renderWires,renderMM][G.stage];
+  $('#stagebody').innerHTML='<p class="small muted" style="margin:0 0 10px">'+STAGES[G.stage].obstacle+'</p>'+fn();
+}
+
+/* ครั้งที่ 1: ลำดับตัวเลข */
+function renderSeq(){
+  const S=G.S,q=S.seq,it=q.items[q.cur];
+  return '<div class="seqmeta"><span>ชุดที่ <b class="mono">'+(q.cur+1)+'</b> จาก <b class="mono">'+q.items.length+'</b></span><span>ตอบถูกทุกชุดประตูถึงจะเปิด</span></div>'
+  +'<div class="tiles" role="img" aria-label="ลำดับตัวเลข '+it.shown.join(', ')+' แล้วตามด้วยเลขที่ต้องหา">'+it.shown.map(v=>'<span class="tile">'+v+'</span>').join('')+'<span class="tile q">?</span></div>'
+  +'<form data-form="seq" class="row"><label class="sr" for="seqAns">เลขถัดไป</label>'
+  +'<input class="field" id="seqAns" type="number" inputmode="numeric" autocomplete="off" placeholder="เลขถัดไป" required>'
+  +'<button class="btn primary" type="submit">ป้อนรหัส</button></form>'
+  +(it.hintOn?'<p class="hintline">ใบ้: '+it.hint+'</p>':'')
+  +'<p class="msg" role="status">'+S.msg+'</p>';
+}
+function submitSeq(){
+  const S=G.S,q=S.seq,it=q.items[q.cur],inp=$('#seqAns');
+  if(!inp||inp.value.trim()==='')return;
+  const v=Number(inp.value);
+  if(v===it.answer){
+    q.cur++;S.msg='';
+    if(q.cur>=q.items.length){solved();return;}
+    renderStage();const e=$('#seqAns');if(e)e.focus();
+  }else{
+    S.msg='ประตูส่งเสียงเตือน รหัสไม่ถูก';shake();
+    if(addSusp(mode().wrong))return;
+    renderStage();const e=$('#seqAns');if(e)e.focus();
+  }
+}
+function hintSeq(){const it=G.S.seq.items[G.S.seq.cur];if(it.hintOn)return false;it.hintOn=true;return true;}
+
+/* ครั้งที่ 2: กล้องวงจรปิด */
+function renderCam(){
+  const S=G.S,C=S.cam,m=mode(),n=C.cams.length,T=C.T,starts=T-n+1;
+  const rules=C.cams.map((c,i)=>'<li><b>กล้อง '+(i+1)+'</b> ตั้งแต่วินาทีที่ '+c.f+' จ้อง '+c.w+' วิ แล้วพัก '+(c.p-c.w)+' วิ สลับกันไปเรื่อยๆ (ก่อนหน้านั้นยังพักอยู่)</li>').join('');
+  let grid='';
+  if(m.cam.grid){
+    grid='<div class="scroll"><div class="camgrid" style="--T:'+T+'"><span></span>'
+      +Array.from({length:T},(_,t)=>'<span class="tk mono">'+t+'</span>').join('');
+    C.cams.forEach((c,i)=>{
+      grid+='<span class="cn">กล้อง '+(i+1)+'</span>';
+      for(let t=0;t<T;t++){
+        const w=camWatching(c,t),p=S.sel!==null&&t===S.sel+i;
+        grid+='<span class="cell '+(w?'watch':'safe')+(p?' path':'')+'" aria-label="กล้อง '+(i+1)+' วินาทีที่ '+t+(w?' จ้อง':' พัก')+'">'+(w?'×':'')+'</span>';
+      }
+    });
+    grid+='</div></div><div class="legend"><span class="w">× กล้องจ้อง</span><span class="s">กล้องพัก</span><span>กรอบดำ = ลำดับที่ชุดคำสั่งจะผ่าน</span></div>';
+  }
+  const chips=Array.from({length:starts},(_,s)=>{
+    const out=S.out.has(s);
+    return '<button class="chip mono'+(S.sel===s?' on':'')+(out?' out':'')+'" data-act="cam-sel" data-s="'+s+'"'+(out?' disabled':'')+' aria-pressed="'+(S.sel===s)+'">'+s+'</button>';
+  }).join('');
+  return '<p style="margin:0 0 6px">ชุดคำสั่งจะแตะกล้อง 1 ที่วินาทีที่<b>ตั้งไว้</b> กล้อง 2 ที่วินาทีถัดไป และต่อไปเรื่อยๆ จนครบ '+n+' ตัว ถ้ากล้องตัวไหนกำลังจ้องอยู่ตอนถูกแตะ คำสั่งจะล้มเหลว</p>'
+  +'<ul class="camrules">'+rules+'</ul>'+grid
+  +'<h3 style="margin-top:14px">ตั้งเวลาเริ่มที่วินาทีที่</h3><div class="chips">'+chips+'</div>'
+  +'<button class="btn primary" data-act="cam-go"'+(S.sel===null?' disabled':'')+'>'+(S.sel===null?'เลือกวินาทีก่อน':'ตั้งเวลาที่วินาทีที่ '+S.sel)+'</button>'
+  +'<p class="msg" role="status">'+S.msg+'</p>';
+}
+function camGo(){
+  const S=G.S,C=S.cam;if(S.sel===null)return;
+  const s=S.sel;
+  if(C.valid.includes(s)){solved();return;}
+  let who=0;for(let i=0;i<C.cams.length;i++){if(camWatching(C.cams[i],s+i)){who=i;break;}}
+  S.out.add(s);S.sel=null;
+  S.msg='กล้อง '+(who+1)+' จับภาพคุณได้ตอนวินาทีที่ '+(s+who);shake();
+  if(addSusp(mode().wrong))return;
+  renderStage();
+}
+function hintCam(){
+  const S=G.S,C=S.cam,n=C.cams.length,starts=C.T-n+1;
+  const wrong=[];for(let s=0;s<starts;s++)if(!C.valid.includes(s)&&!S.out.has(s))wrong.push(s);
+  if(!wrong.length)return false;
+  shuffle(wrong).slice(0,3).forEach(s=>{S.out.add(s);if(S.sel===s)S.sel=null;});
+  S.msg='ใบ้: ตัดตัวเลือกที่ผิดออกให้แล้ว';return true;
+}
+
+/* ครั้งที่ 3: ลิ้นชักกุญแจ */
+function renderKey(){
+  const S=G.S,K=S.key;
+  const drawers=K.L.map((l,i)=>{
+    const why=S.out.get(i);
+    return '<button class="drawer'+(why?' out':'')+'" data-act="drawer" data-i="'+i+'"'+(why?' disabled':'')+'>'
+      +'<span class="dl">'+l+'</span><span class="sign">'+stmtText(K.st[i],K.L)+'</span><span class="st">'+(why||'')+'</span></button>';
+  }).join('');
+  return '<p style="margin:0 0 6px"><b>เสียงที่แอบฟังมา:</b> '+K.ruleText+'</p>'
+  +'<p class="muted small" style="margin:0">ป้ายแต่ละใบแปะอยู่บนลิ้นชักของตัวเอง คำว่า "นี้" หมายถึงลิ้นชักที่แปะป้ายนั้น</p>'
+  +'<div class="drawers">'+drawers+'</div><p class="msg" role="status">'+S.msg+'</p>';
+}
+function drawerOpen(i){
+  const S=G.S,K=S.key;if(S.out.has(i))return;
+  if(i===K.answer){solved();return;}
+  S.out.set(i,'ว่างเปล่า');S.msg='ลิ้นชัก '+K.L[i]+' ว่างเปล่า และเสียงลิ้นชักดังไปทั้งห้อง';shake();
+  if(addSusp(mode().wrong))return;
+  renderStage();
+}
+function hintKey(){
+  const S=G.S,K=S.key;
+  const c=[];for(let i=0;i<K.n;i++)if(i!==K.answer&&!S.out.has(i))c.push(i);
+  if(c.length<=1)return false;
+  const i=pick(c);S.out.set(i,'ตัดออก (ใบ้)');S.msg='ใบ้: ลิ้นชัก '+K.L[i]+' ไม่มีกุญแจ';return true;
+}
+
+/* ครั้งที่ 4: ตัดสายไฟ */
+function renderWires(){
+  const S=G.S,Wr=S.wires;
+  const wires=Wr.order.map((ci,i)=>{
+    const col=WIRE_COLORS[ci],out=Wr.out.has(i);
+    return '<button class="wire'+(out?' out':'')+'" data-act="wire" data-i="'+i+'"'+(out?' disabled':'')+' aria-label="สาย'+col.n+(out?' ตัดแล้ว':'')+'">'
+      +'<span class="bar" style="background:'+col.c+'"></span><span class="wn">'+col.n+'</span><span class="st">'+(out?'ตัดแล้ว':'')+'</span></button>';
+  }).join('');
+  return '<p style="margin:0 0 6px"><b>โน้ตที่ช่างไฟทิ้งไว้:</b> สายหลักมีเส้นเดียว ตัดให้ถูกเส้น</p>'
+  +'<ul class="camrules">'+Wr.clues.map(t=>'<li>'+t+'</li>').join('')+'</ul>'
+  +'<div class="wires">'+wires+'</div><p class="msg" role="status">'+S.msg+'</p>';
+}
+function cutWire(i){
+  const S=G.S,Wr=S.wires;if(Wr.out.has(i))return;
+  if(i===Wr.ans){solved();return;}
+  Wr.out.add(i);S.msg='สายสี'+WIRE_COLORS[Wr.order[i]].n+'ไม่ใช่สายหลัก มีประกายไฟแล้วเสียงดังไปทั้งห้อง';shake();
+  if(addSusp(mode().wrong))return;
+  renderStage();
+}
+function hintWires(){
+  const S=G.S,Wr=S.wires;
+  const c=[];for(let i=0;i<Wr.order.length;i++)if(i!==Wr.ans&&!Wr.out.has(i))c.push(i);
+  if(c.length<=1)return false;
+  const i=pick(c);Wr.out.add(i);S.msg='ใบ้: สายสี'+WIRE_COLORS[Wr.order[i]].n+'ไม่ใช่สายหลัก';return true;
+}
+
+/* ครั้งที่ 5: รหัสประตูใหญ่ */
+function renderMM(){
+  const S=G.S,M=S.mm;
+  const hist=M.hist.map(h=>'<li><span class="digits">'+h.g.map(d=>'<b class="mono">'+d+'</b>').join('')+'</span>'
+    +'<span class="pegs mono" aria-label="เลขถูกตำแหน่ง '+h.b+' ตัว เลขถูกแต่ผิดตำแหน่ง '+h.c+' ตัว">'+'●'.repeat(h.b)+'○'.repeat(h.c)+(h.b+h.c===0?'ไม่ตรงเลย':'')+'</span>'
+    +'<span class="muted small">ตรงตำแหน่ง '+h.b+' · ผิดตำแหน่ง '+h.c+'</span></li>').join('');
+  const slots=Array.from({length:M.len},(_,i)=>M.cur[i]!==undefined
+    ?'<button class="slot filled" data-act="mm-slot" data-i="'+i+'" aria-label="ลบเลข '+M.cur[i]+'">'+M.cur[i]+'</button>'
+    :'<span class="slot" aria-hidden="true"></span>').join('');
+  const pad=M.pool.map(d=>{
+    const ex=M.excl.has(d);
+    return '<button class="key mono'+(ex?' x':'')+'" data-act="mm-digit" data-d="'+d+'"'+(M.cur.includes(d)||ex?' disabled':'')+'>'+d+'</button>';
+  }).join('');
+  return '<p style="margin:0 0 6px">รหัส <b>'+M.len+' หลัก</b> ใช้เลข '+M.pool[0]+' ถึง '+M.pool[M.pool.length-1]+' และไม่มีเลขซ้ำ เหลืออีก <b class="mono">'+(M.max-M.hist.length)+'</b> ครั้งที่ลองได้</p>'
+  +(hist?'<ul class="hist">'+hist+'</ul>':'<p class="muted small" style="margin:8px 0">ยังไม่เคยลองเลย</p>')
+  +'<div class="slots">'+slots+'</div><div class="pad">'+pad+'</div>'
+  +'<div class="row"><button class="btn primary" data-act="mm-send"'+(M.cur.length===M.len?'':' disabled')+'>ส่งรหัส</button>'
+  +'<button class="btn ghost" data-act="mm-clear"'+(M.cur.length?'':' disabled')+'>ล้าง</button></div>'
+  +'<p class="msg" role="status">'+S.msg+'</p>';
+}
+function mmSend(){
+  const S=G.S,M=S.mm;if(M.cur.length!==M.len)return;
+  const g=M.cur.slice(),fb=mmFeedback(M.code,g);
+  M.hist.push({g,b:fb.b,c:fb.c});M.cur=[];S.msg='';
+  if(fb.b===M.len){solved();return;}
+  if(M.hist.length>=M.max){S.susp=100;updateMeter();caught('ลองรหัสครบทุกครั้งแล้วประตูยังไม่เปิด ยามได้ยินเสียงกดปุ่มรัวๆ จึงเดินมาดู');return;}
+  if(addSusp(Math.round(mode().wrong*0.4)))return;
+  renderStage();
+}
+function hintMM(){
+  const S=G.S,M=S.mm;
+  const c=M.pool.filter(d=>!M.code.includes(d)&&!M.excl.has(d)&&!M.cur.includes(d));
+  if(!c.length)return false;
+  const d=pick(c);M.excl.add(d);S.msg='ใบ้: เลข '+d+' ไม่อยู่ในรหัส';return true;
+}
+
+/* ---------- ใบ้ ---------- */
+function useHint(){
+  const S=G.S;if(!S||G.screen!=='play')return;
+  if(!W||!W.puzzleOpen){setGoal('ใบ้ใช้ได้ตอนเปิดแผงอยู่ เดินไปที่แผงก่อน');return;}
+  const ok=[hintSeq,hintCam,hintKey,hintWires,hintMM][G.stage]();
+  if(!ok){S.msg='ตอนนี้ไม่มีใบ้เพิ่มให้แล้ว';renderStage();return;}
+  G.hints++;
+  if(addSusp(mode().hint))return;
+  renderStage();
+}
+
+/* ---------- ปุ่มและฟอร์ม ---------- */
+const ACT={
+  begin:b=>startMode(b.dataset.mode),
+  go:()=>beginStage(),
+  retry:()=>beginStage(),
+  next:()=>{if(G.stage>=4){win();}else{G.stage++;brief();}},
+  hint:()=>useHint(),
+  home:b=>{
+    if(G.screen==='play'&&!G.exitArm){
+      G.exitArm=true;b.textContent='กดอีกครั้งเพื่อออก';
+      setTimeout(()=>{G.exitArm=false;if(b.isConnected)b.textContent='หน้าแรก';},2500);return;
+    }
+    G.exitArm=false;showHome();
+  },
+  'cam-sel':b=>{const s=Number(b.dataset.s);G.S.sel=G.S.sel===s?null:s;G.S.msg='';renderStage();},
+  'cam-go':()=>camGo(),
+  drawer:b=>drawerOpen(Number(b.dataset.i)),
+  wire:b=>cutWire(Number(b.dataset.i)),
+  'mm-digit':b=>{const M=G.S.mm,d=Number(b.dataset.d);if(M.cur.length<M.len&&!M.cur.includes(d)){M.cur.push(d);renderStage();}},
+  'mm-slot':b=>{G.S.mm.cur.splice(Number(b.dataset.i),1);renderStage();},
+  'mm-clear':()=>{G.S.mm.cur=[];renderStage();},
+  'mm-send':()=>mmSend(),use:()=>openPuzzle(),'close-puzzle':()=>closePuzzle()
+};
+document.addEventListener('click',e=>{
+  const b=e.target.closest('[data-act]');
+  if(!b||b.disabled)return;
+  const f=ACT[b.dataset.act];
+  if(f)f(b);
+});
+document.addEventListener('submit',e=>{
+  const f=e.target.closest('[data-form]');
+  if(!f)return;
+  e.preventDefault();
+  if(f.dataset.form==='seq'&&G.screen==='play')submitSeq();
+});
+
+showHome();
+})();
+</script>
+
+</body></html>
